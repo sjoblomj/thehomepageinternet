@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>${title} - Johan Sjöblom</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/png" href="${nesting}favicon.png" />
+  <link rel="stylesheet" type="text/css" href="${nesting}style_tiny.css"    media="screen and (max-width:  900px)" />
+  <link rel="stylesheet" type="text/css" href="${nesting}style_smaller.css" media="screen and (min-width:  901px) and (max-width: 1000px)" />
+  <link rel="stylesheet" type="text/css" href="${nesting}style_small.css"   media="screen and (min-width: 1001px) and (max-width: 1110px)" />
+  <link rel="stylesheet" type="text/css" href="${nesting}style_medium.css"  media="screen and (min-width: 1111px) and (max-width: 1200px)" />
+  <link rel="stylesheet" type="text/css" href="${nesting}style_large.css"   media="screen and (min-width: 1201px) and (max-width: 1500px)" />
+  <link rel="stylesheet" type="text/css" href="${nesting}style_huge.css"    media="screen and (min-width: 1501px)" />
+  <link rel="stylesheet" type="text/css" href="${nesting}style_new.css" />
+</head>
+
+<body>
+<div class="page">
+    <div class="left">
+        <div class="menu">
+            <div class="menuitem"><a href="${nesting}index.html" class="mainlogo">Johan<br /><span class="mainlogocolour">Sjö</span>blom</a></div>
+            <div class="menuitem"><a href="${nesting}index.html">Presentation</a></div>
+            <div class="menuitem"><a href="${nesting}projects.html">Projects</a></div>
+            <div class="menuitem"><a href="${nesting}writings.html">Writings</a></div>
+            <div class="menuitem"><a href="${nesting}contact.html">Contact</a></div>
+        </div>
+        <div class="menuitemicons">
+            <a href="${nesting}rss.html" class="iconlink"><img src="${nesting}images/rss.svg" class="icon" title="RSS feed" alt="RSS feed" /></a>
+            <a href="mailto:sjoblomj88@gmail.com" class="iconlink"><img src="${nesting}images/email.svg" class="icon" title="E-mail me" alt="E-mail" /></a>
+
+            <div class="dropdown">
+                <img src="${nesting}images/wikipedia.svg" class="icon wikipediadropdown" />
+                <div class="dropdown-content">
+                    <h4>Wikimedia contributions</h4>
+                    <a href="https://sv.wikipedia.org/wiki/Special:Bidrag/Ojan" title="Visit my Wikipedia edit history (2300 edits since 2006)" target="_blank" class="iconlink"><img src="${nesting}images/wikipedia.svg" class="icon dropdownicon" title="Visit my Wikipedia edit history (2275 edits since 2006)" alt="Swedish Wikipedia edit history" />Swedish Wikipedia</a>
+                    <a href="https://en.wikipedia.org/wiki/Special:Contributions/Ojan" title="Visit my Wikipedia edit history (400 edits since 2006)" target="_blank" class="iconlink"><img src="${nesting}images/wikipedia.svg" class="icon dropdownicon" title="Visit my Wikipedia edit history (400 edits since 2006)" alt="English Wikipedia edit history" />English Wikipedia</a>
+                    <a href="https://commons.wikimedia.org/wiki/Special:Contributions/Ojan"  title="Visit my Wikimedia Commons edit history (750 edits including uploaded images since 2006)" target="_blank" class="iconlink"><img src="${nesting}images/wikimedia_commons.svg" class="icon dropdownicon" title="Visit my Wikimedia Commons edit history (750 edits including uploaded images since 2006)" alt="Wikimedia Commons history" />Wikimedia Commons</a>
+                </div>
+            </div>
+
+            <a href="https://www.openstreetmap.org/user/Ojan/history" target="_blank" class="iconlink"><img src="${nesting}images/openstreetmap.svg" class="icon" title="Visit my Open Street Map edit history (950 edits since 2009)" alt="Open Street Map history" /></a>
+            <a href="https://github.com/sjoblomj" target="_blank" class="iconlink"><img src="${nesting}images/github.svg" class="icon" title="Visit my GitHub account" alt="GitHub account" /></a>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="content">

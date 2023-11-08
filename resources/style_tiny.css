@@ -1,0 +1,55 @@
+div.page {
+    padding-top: 3%;
+    width: 100%;
+}
+
+div.left {
+    display: table;
+    margin: 0 auto;
+}
+
+div.right {
+    clear: both;
+    padding: 0% 5% 0% 5%;
+}
+
+div.menu {
+    float: left;
+    clear: left;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-right-color: rgb(133,131,131);
+}
+div.menuitem {
+    text-align: right;
+}
+div.menuitemicons {
+    position: absolute;
+    display: inline;
+    float: left;
+    padding-left: 20px;
+    padding-bottom: 5px;
+}
+/* Make linebreaks after each icon
+ * https://stackoverflow.com/questions/10933837/line-break-like-br-using-only-css */
+div.menuitemicons ::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: -13em;
+    background-color: #f9f9f9;
+    min-width: 15em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -khtml-border-radius: 8px;
+    border-radius: 8px;
+}

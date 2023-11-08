@@ -1,0 +1,42 @@
+div.page {
+    padding-top: 3%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+
+    /* <Fallback for browsers without display:grid> */
+    display: block;
+    /* </Fallback> */
+}
+
+div.left {
+    grid-column: 2 / 5;
+
+    /* <Fallback for browsers without display:grid> */
+    padding-left: 7%;
+    padding-top: 2em;
+    position: fixed;
+    /* </Fallback> */
+}
+
+div.right {
+    grid-column: auto / span 6;
+
+    /* <Fallback for browsers without display:grid> */
+    padding-left: 35%;
+    width: 55%;
+    min-width: 40em;
+    /* </Fallback> */
+}
+
+div.menuitem, div.menuitemicons {
+    clear: right;
+    float: right;
+    padding-right: 1ex;
+}
+ .mainlogo a:link    { color: var(--text-colour) !important;   text-decoration: none; }
+ .mainlogo a:visited { color: var(--text-colour) !important;   text-decoration: none; }
+ .mainlogo a:hover   { color: var(--text-colour) !important; text-decoration: none; }
+ .mainlogo a:active  { color: var(--text-colour) !important;   text-decoration: none; }
+
