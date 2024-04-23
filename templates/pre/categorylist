@@ -1,0 +1,60 @@
+#!/bin/bash
+awk -i inplace -i "utils.awk" -v rootpath="${4}" '
+BEGIN {
+    DELIM = "|";
+    delete CATEGORIES[""];
+    delete TITLES[""];
+}
+{
+    if ($0 ~ "{{categorylist") {
+        get_categories_from_articles();
+        content = "<dl>";
+        for (c in CATEGORIES){
+            content = content "<dt>" c "</dt>";
+            split(CATEGORIES[c], paths, DELIM);
+            for (p in paths) {
+                path = get_path(paths[p]);
+                content = content "<dd><a href=" path ">" TITLES[paths[p]] "</a></dd>";
+            }
+        }
+        content = content "</dl>";
+        sub("{{categorylist", "{{categorylist |categories=" content, $0);
+    }
+    print $0;
+}
+
+function get_categories_from_articles(sysout, o, c, path, cat) {
+    sysout = run_system_command_with_output("grep -PoIri \"{{article .*\\|categories ?= ?\\K([^}|]*)\" " rootpath " | tr \"\\n\" \"" DELIM "\"");
+    split(sysout, o, DELIM);
+    for (i in o) {
+        if (o[i] == "")
+            continue;
+        if (split(o[i], c, ":") != 2) {
+            print_error("Unable to split string: " o[i]);
+            continue;
+        }
+        path = c[1];
+        populate_paths_dict(path);
+        split(c[2], c, ",");
+
+        for (cat in c) {
+            cat = trim(c[cat]);
+            if (CATEGORIES[cat] == "")
+                CATEGORIES[cat] = path;
+            else
+                CATEGORIES[cat] = CATEGORIES[cat] DELIM path;
+        }
+    }
+}
+
+function populate_paths_dict(path) {
+    if (TITLES[path] == "")
+        TITLES[path] = run_system_command_with_output("grep -Po \" *# *\\K(.*)\" " path);
+}
+
+function get_path(p,  pos) {
+    sub("/index.md$", ".html", p);
+    pos = index(p, "/");
+    return substr(p, pos + 1);
+}
+' $1

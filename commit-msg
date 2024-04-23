@@ -1,0 +1,107 @@
+#!/bin/bash
+url_start="https://www.sjoblomj.org"
+url_end=".html"
+
+timestamp=$(date -Ru)
+changes=$(git status --porcelain -uno | grep -Po '(?=^[^ ])\K.+(?=/)' | sed 's|/| |g' | sed 's|"||g' | sort | uniq)
+authorname=$(git config --get user.name)
+
+op=$(  echo "${changes}" | awk '{print substr($1, 1, 1)}')
+type=$(echo "${changes}" | awk '{print $2}' | sort | uniq)
+name=$(echo "${changes}" | awk '{print $3}')
+
+title=""
+link=""
+author=""
+description=""
+categories=""
+if [ $(echo "${changes}" | wc -l) -gt 1 ]; then
+    # There are multiple directories changed.
+    # Do nothing; Ask the user to set the params manually
+    :
+else
+    action=""
+    if [ "${op}" == "A" ]; then
+         action="New $(echo $type | sed 's/s$//') published"
+    else
+         action="Updated $(echo $type | sed 's/s$//')"
+    fi
+    title="${action}: $(echo $name | sed 's/_/ /g' | sed 's/\b\(.\)/\u\1/g')"
+    link="${url_start}/${type}/${name}${url_end}"
+    categories=$(cat  "${type}/${name}/index.md" | grep -Po '.*article.*categories=\K[^|}]+(?=)' | awk '{$1=$1};1')
+    if [ "${categories}" == "" ]; then
+        categories="${type}"
+    fi
+fi
+
+function get_user_input {
+    local value
+    local text
+    value="$1"
+    text="$2"
+
+    printf "## $text ##\n" > /dev/tty
+    if [ "${value}" != "" ]; then
+        printf "Suggestion: '\e[37m${value}\e[0m'. Provide $text or Enter to accept suggestion:\n" > /dev/tty
+    else
+        printf "Provide $text: " > /dev/tty
+    fi
+    read < /dev/tty 
+    if [ "$REPLY" != "" ]; then
+        value="$REPLY"
+        printf "\n" > /dev/tty
+    fi
+    echo "$value" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g' # Escape any HTML
+}
+
+function ask_user {
+    echo "" > /dev/tty
+    ans=""
+    while true; do
+        read -p "Add to \"$1\" RSS feed (y/n)?" -n 1 -r < /dev/tty 
+        echo > /dev/tty
+        case "$REPLY" in
+          y|Y ) ans="y"; break;;
+          n|N ) ans="n"; break;;
+          * ) echo "Invalid answer" > /dev/tty;;
+        esac
+    done
+    echo "" > /dev/tty
+    echo $ans
+}
+
+numTypes=$(echo "$type" | wc -l)
+for t in $type "." ; do
+    rssfile="$t/rss.xml"
+    if [ ! -e "$rssfile" ]; then
+        echo "Can't find ${rssfile}"
+        continue
+    fi
+
+    if [ "$t" != "." ] || [ $numTypes -gt 1 ]; then
+        q="$t"
+        if [ "$t" == "." ]; then
+            q="Root"
+        fi
+        if [ $(ask_user "$q") == "n" ]; then
+            if [ $numTypes -eq 1 ]; then
+                break
+            else
+                continue
+            fi
+        fi
+
+        title=$(get_user_input "${title}" "Title")
+        link=$(get_user_input "${link}" "Link")
+        author=$(get_user_input "${authorname}" "Author name")
+        categories=$(get_user_input "${categories}" "Categories")
+        description=$(get_user_input "${description}" "Description")
+    fi
+
+    item="\n    <item>\n      <title>${title}</title>\n      <dc:creator>${author}</dc:creator>\n      <guid isPermaLink="false">${link} ${timestamp}</guid>\n      <link>${link}</link>\n      <description>${description}</description>\n      <category>${categories}</category>\n      <pubDate>${timestamp}</pubDate>\n    </item>"
+    awk -v timestamp="${timestamp}" -i inplace '{if ($0 ~ "<lastBuildDate>") $0 = "    <lastBuildDate>" timestamp "</lastBuildDate>"; print $0; }' "$rssfile"
+    awk -v item="${item}" -i inplace '{if ($0 ~ "<!-- Content -->") $0 = $0 item; print $0; }' "$rssfile"
+
+    git add "${t}/rss.xml"
+    printf "\e[32mAdded ${t}/rss.xml to commit\e[0m\n"
+done
