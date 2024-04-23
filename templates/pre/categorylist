@@ -24,7 +24,7 @@ BEGIN {
 }
 
 function get_categories_from_articles(sysout, o, c, path, cat) {
-    sysout = run_system_command_with_output("grep -PoIri \"{{article .*\\|categories ?= ?\\K([^}|]*)\" " rootpath " | tr \"\\n\" \"" DELIM "\"");
+    sysout = run_system_command_with_output("grep --include=index.md -PoIri \"{{article .*\\|categories ?= ?\\K([^}|]*)\" " rootpath " | tr \"\\n\" \"" DELIM "\"");
     split(sysout, o, DELIM);
     for (i in o) {
         if (o[i] == "")
@@ -52,9 +52,9 @@ function populate_paths_dict(path) {
         TITLES[path] = run_system_command_with_output("grep -Po \" *# *\\K(.*)\" " path);
 }
 
-function get_path(p,  pos) {
+function get_path(p) {
     sub("/index.md$", ".html", p);
-    pos = index(p, "/");
-    return substr(p, pos + 1);
+    sub(rootpath, "", p);
+    return p;
 }
 ' $1
