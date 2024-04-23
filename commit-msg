@@ -7,8 +7,9 @@ changes=$(git status --porcelain -uno | grep -Po '(?=^[^ ])\K.+(?=/)' | sed 's|/
 authorname=$(git config --get user.name)
 
 op=$(  echo "${changes}" | awk '{print substr($1, 1, 1)}')
-type=$(echo "${changes}" | awk '{print $2}' | sort | uniq)
-name=$(echo "${changes}" | awk '{print $3}')
+dir=$( echo "${changes}" | awk '{print $2}')
+type=$(echo "${changes}" | awk '{print $3}' | sort | uniq)
+name=$(echo "${changes}" | awk '{print $4}')
 
 title=""
 link=""
@@ -28,17 +29,15 @@ else
     fi
     title="${action}: $(echo $name | sed 's/_/ /g' | sed 's/\b\(.\)/\u\1/g')"
     link="${url_start}/${type}/${name}${url_end}"
-    categories=$(cat  "${type}/${name}/index.md" | grep -Po '.*article.*categories=\K[^|}]+(?=)' | awk '{$1=$1};1')
+    categories=$(cat "${dir}/${type}/${name}/index.md" | grep -Po '.*article.*categories=\K[^|}]+(?=)' | awk '{$1=$1};1')
     if [ "${categories}" == "" ]; then
         categories="${type}"
     fi
 fi
 
 function get_user_input {
-    local value
-    local text
-    value="$1"
-    text="$2"
+    local value="$1"
+    local text="$2"
 
     printf "## $text ##\n" > /dev/tty
     if [ "${value}" != "" ]; then
@@ -71,10 +70,12 @@ function ask_user {
 }
 
 numTypes=$(echo "$type" | wc -l)
-for t in $type "." ; do
+for t in $dir/$type $dir "." ; do
     rssfile="$t/rss.xml"
     if [ ! -e "$rssfile" ]; then
-        echo "Can't find ${rssfile}"
+        if [ "$t" != "." ]; then
+            echo "Can't find ${rssfile}"
+        fi
         continue
     fi
 
@@ -91,10 +92,10 @@ for t in $type "." ; do
             fi
         fi
 
-        title=$(get_user_input "${title}" "Title")
-        link=$(get_user_input "${link}" "Link")
-        author=$(get_user_input "${authorname}" "Author name")
-        categories=$(get_user_input "${categories}" "Categories")
+        title=$(      get_user_input "${title}"       "Title")
+        link=$(       get_user_input "${link}"        "Link")
+        author=$(     get_user_input "${authorname}"  "Author name")
+        categories=$( get_user_input "${categories}"  "Categories")
         description=$(get_user_input "${description}" "Description")
     fi
 
@@ -102,6 +103,6 @@ for t in $type "." ; do
     awk -v timestamp="${timestamp}" -i inplace '{if ($0 ~ "<lastBuildDate>") $0 = "    <lastBuildDate>" timestamp "</lastBuildDate>"; print $0; }' "$rssfile"
     awk -v item="${item}" -i inplace '{if ($0 ~ "<!-- Content -->") $0 = $0 item; print $0; }' "$rssfile"
 
-    git add "${t}/rss.xml"
-    printf "\e[32mAdded ${t}/rss.xml to commit\e[0m\n"
+    git add "$t/rss.xml"
+    printf "\e[32mAdded $t/rss.xml to commit\e[0m\n"
 done
