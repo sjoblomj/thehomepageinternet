@@ -11,6 +11,10 @@ dir=$( echo "${changes}" | awk '{print $2}')
 type=$(echo "${changes}" | awk '{print $3}' | sort | uniq)
 name=$(echo "${changes}" | awk '{print $4}')
 
+if [ -z "$op" ] || [ -z "$dir" ] || [ -z "$type" ] || [ -z "$name" ]; then
+    exit 0
+fi
+
 title=""
 link=""
 author=""
@@ -30,7 +34,7 @@ else
     title="${action}: $(echo $name | sed 's/_/ /g' | sed 's/\b\(.\)/\u\1/g')"
     link="${url_start}/${type}/${name}${url_end}"
     categories=$(cat "${dir}/${type}/${name}/index.md" | grep -Po '.*article.*categories=\K[^|}]+(?=)' | awk '{$1=$1};1')
-    if [ "${categories}" == "" ]; then
+    if [ -z "$categories" ]; then
         categories="${type}"
     fi
 fi
@@ -40,13 +44,13 @@ function get_user_input {
     local text="$2"
 
     printf "## $text ##\n" > /dev/tty
-    if [ "${value}" != "" ]; then
+    if [ -n "$value" ]; then
         printf "Suggestion: '\e[37m${value}\e[0m'. Provide $text or Enter to accept suggestion:\n" > /dev/tty
     else
         printf "Provide $text: " > /dev/tty
     fi
     read < /dev/tty 
-    if [ "$REPLY" != "" ]; then
+    if [ -n "$REPLY" ]; then
         value="$REPLY"
         printf "\n" > /dev/tty
     fi

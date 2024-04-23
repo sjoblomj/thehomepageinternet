@@ -8,19 +8,6 @@ if [ "$outfile" == "" ]; then
   outfile="$infile"
 fi
 
-#convert "$infile" \
-#    -format 'roundrectangle 1,1 %[fx:w+4],%[fx:h+4] 15,15' \
-#    -write info:tmp.mvg \
-#    -alpha set -bordercolor none -border 2 \
-#    \( +clone -alpha transparent -background none \
-#       -fill white -stroke none  -strokewidth 0 -draw @tmp.mvg \) \
-#    -compose DstIn -composite \
-#    \( +clone  -background none \
-#       -fill none -stroke "$bc"  -strokewidth 2 -draw @tmp.mvg \
-#       -fill none -stroke white  -strokewidth 0 -draw @tmp.mvg \) \
-#    -compose Over -composite     "$outfile"
-#rm -f tmp.mvg      # Cleanup of temporary file
-
 # From http://www.imagemagick.org/Usage/thumbnails/#rounded_border
 
 insize=$(identify -format "%[fx:w]x%[fx:h]" "$infile")
@@ -50,5 +37,5 @@ convert "$outfile" -fuzz 7% -trim "$outfile"
 outsize=$(identify -format "%[fx:w]x%[fx:h]" "$outfile")
 if [ "$outsize" != "275x170" ]; then
   echo "Warning: Expected result to be of size 275x170, but it was $outsize."
-  echo "For this, the input should usually be 276x171, but it was $insize."
+  echo "For this, the input should usually  be 276x171, but it was $insize."
 fi
