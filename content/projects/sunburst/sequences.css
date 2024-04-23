@@ -1,0 +1,123 @@
+#chart {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+#main {
+  float: left;
+}
+#sidebar {
+  float: left;
+}
+
+
+#explanation {
+  position: absolute;
+  text-align: center;
+  color: #666;
+  z-index: -1;
+}
+.explanation-text {
+  display: block;
+}
+.explanation-name {
+  font-size: 2.5em;
+}
+.explanation-value {
+  font-size: 25px;
+}
+.explanation-percentage {
+  padding-top: 1em;
+  font-size: 20px;
+}
+
+.segment {
+  stroke: white;
+  stroke-width: 1px;
+}
+.segmentlabel {
+  display: none;
+}
+@media print {
+  .segment {
+    stroke: black;
+    stroke-width: 2px;
+  }
+  .segmentlabel {
+    display: block;
+    fill: black;
+  }
+}
+#legendtable {
+  border-collapse: collapse;
+}
+#legendtablebody .legendheader, .legendfooter {
+  font-weight: bold;
+}
+#legendtable .legendheaderfooter {
+  background-color: #f0f0f0;
+}
+#legendtablebody .legendamount {
+  text-align: right;
+  font-family: monospace;
+}
+#legendtablebody .legendtotal {
+  text-align: right;
+}
+#legendtablebody .legendcolour {
+  color: transparent;
+  border-radius: 25px;
+  min-width: 1ex;
+  padding: 1ex;
+}
+@media print {
+  #legendtablebody .legendcolour {
+    color: black;
+  }
+}
+
+#breadcrumbs {
+  display: flex;
+  color: white;
+  font-weight: 900;
+  text-shadow:
+  -1px -1px 0 #000,
+   1px -1px 0 #000,
+   -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+.breadcrumb {
+  line-height: 30px;
+  height: 30px;
+  position: relative;
+  margin: 0 1px 0 2px;
+  padding: 0 1em 0 2em;
+}
+.breadcrumb::before, .breadcrumb:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 10px solid;
+}
+.breadcrumb::before {
+  right: -10px;
+  border-left-color: inherit;
+  z-index: 2;
+}
+.breadcrumb:after {
+  left: 0;
+  border-left-color: white;
+  z-index: 1;
+}
