@@ -12,13 +12,22 @@
         <url>https://www.sjoblomj.org/favicon.svg</url>
     </image>
     <pubDate>Fri, 07 Oct 2022 18:17:16 +0000</pubDate>
-    <lastBuildDate>Tue, 23 Apr 2024 21:04:08 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 May 2024 20:13:09 +0000</lastBuildDate>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <!-- Content -->
     <item>
+      <title>Gapminder update</title>
+      <dc:creator>Johan Sjöblom</dc:creator>
+      <guid isPermaLink="false">https://www.sjoblomj.org/projects/gapminder.html Sun, 16 Jun 2024 09:41:44 +0000</guid>
+      <link>https://www.sjoblomj.org/projects/gapminder.html</link>
+      <description>Updated the Gapminder data visualization</description>
+      <category>projects</category>
+      <pubDate>Mon, 27 May 2024 20:13:09 +0000</pubDate>
+    </item>
+    <item>
       <title>New project published: Hexprinter</title>
       <dc:creator>Johan Sjöblom</dc:creator>
-      <guid isPermaLink=false>https://www.sjoblomj.org/projects/hexprinter.html Tue, 23 Apr 2024 21:04:08 +0000</guid>
+      <guid isPermaLink="false">https://www.sjoblomj.org/projects/hexprinter.html Tue, 23 Apr 2024 21:04:08 +0000</guid>
       <link>https://www.sjoblomj.org/projects/hexprinter.html</link>
       <description>Small program to print files in hexadecimal notation.</description>
       <category>projects</category>
