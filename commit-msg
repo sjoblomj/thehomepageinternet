@@ -103,7 +103,7 @@ for t in $dir/$type $dir "." ; do
         description=$(get_user_input "${description}" "Description")
     fi
 
-    item="\n    <item>\n      <title>${title}</title>\n      <dc:creator>${author}</dc:creator>\n      <guid isPermaLink="false">${link} ${timestamp}</guid>\n      <link>${link}</link>\n      <description>${description}</description>\n      <category>${categories}</category>\n      <pubDate>${timestamp}</pubDate>\n    </item>"
+    item="\n    <item>\n      <title>${title}</title>\n      <dc:creator>${author}</dc:creator>\n      <guid isPermaLink=\"false\">${link} ${timestamp}</guid>\n      <link>${link}</link>\n      <description>${description}</description>\n      <category>${categories}</category>\n      <pubDate>${timestamp}</pubDate>\n    </item>"
     awk -v timestamp="${timestamp}" -i inplace '{if ($0 ~ "<lastBuildDate>") $0 = "    <lastBuildDate>" timestamp "</lastBuildDate>"; print $0; }' "$rssfile"
     awk -v item="${item}" -i inplace '{if ($0 ~ "<!-- Content -->") $0 = $0 item; print $0; }' "$rssfile"
 
