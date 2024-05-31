@@ -41,6 +41,7 @@ Here follows a selection of the open source projects that I have contributed to.
 {{imglink |title=mem-fs-editor |dir=projects |link=mem-fs-editor |img=mem-fs-editor_icon_small.png |description=Written in: Javascript{{linebreak}}{{linebreak}}File edition helpers working on top of mem-fs.}}
 {{imglink |title=Viewnior |dir=projects |link=viewnior |img=viewnior_logo_small.png |description=Written in: C{{linebreak}}{{linebreak}}Elegant and simple image viewer, to which I added features.}}
 {{imglink |title=gsimplecal |dir=projects |link=gsimplecal |img=gsimplecal_small.png |description=Written in: C++{{linebreak}}{{linebreak}}Light-weight calendar widget, which I ported to GTK3.}}
+{{imglink |title=mark2epub |dir=projects |link=mark2epub |img=mark2epub_small.png |description=Written in: Python{{linebreak}}{{linebreak}}Program to create ePub books from Markdown files.}}
 {{imglink |title=Sikuli |dir=projects |link=sikuli |img=sikuli_logo_small.png |description=Written in: Java{{linebreak}}{{linebreak}}Desktop automation tool, for which I added features. Can be used for testing, automation, administration etc.}}
 
 ---
