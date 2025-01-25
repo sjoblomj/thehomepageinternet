@@ -38,6 +38,7 @@ Here follows a selection of the open source projects that I have contributed to.
 
 {{imglink |title=OpenAPI Generator |dir=projects |link=openapi |img=openapi_small.png |description=Written in: Kotlin, Java and Mustache{{linebreak}}{{linebreak}}Allows generation of API client libraries, server stubs etc. given an OpenAPI Spec.}}
 {{imglink |title=Sunburst |dir=projects |link=sunburst |img=sunburst_small.png |description=Written in: d3.js and Javascript{{linebreak}}{{linebreak}}Interactive doughnut chart.}}
+{{imglink |title=Waybar |dir=projects |link=waybar |img=waybar_small.png |description=Written in: C++{{linebreak}}{{linebreak}}Wayland bar listing open apps and widgets.}}
 {{imglink |title=mem-fs-editor |dir=projects |link=mem-fs-editor |img=mem-fs-editor_icon_small.png |description=Written in: Javascript{{linebreak}}{{linebreak}}File edition helpers working on top of mem-fs.}}
 {{imglink |title=Viewnior |dir=projects |link=viewnior |img=viewnior_logo_small.png |description=Written in: C{{linebreak}}{{linebreak}}Elegant and simple image viewer, to which I added features.}}
 {{imglink |title=gsimplecal |dir=projects |link=gsimplecal |img=gsimplecal_small.png |description=Written in: C++{{linebreak}}{{linebreak}}Light-weight calendar widget, which I ported to GTK3.}}
