@@ -7,12 +7,16 @@ changes=$(git status --porcelain -uno | grep -Po '(?=^[^ ])\K.+(?=/)' | sed 's|/
 authorname=$(git config --get user.name)
 
 op=$(  echo "${changes}" | awk '{print substr($1, 1, 1)}')
-dir=$( echo "${changes}" | awk '{print $2}')
-type=$(echo "${changes}" | awk '{print $3}' | sort | uniq)
-name=$(echo "${changes}" | awk '{print $4}')
+dir=$( echo "${changes}" | awk '{print $2}' | sort | uniq)
+cat=$( echo "${changes}" | awk '{print $3}' | sort | uniq)
+name=$(echo "${changes}" | awk '{print $4}' | sed '/^\s*$/d' | sort | uniq)
 
-if [ -z "$op" ] || [ -z "$dir" ] || [ -z "$type" ] || [ -z "$name" ]; then
+if [ -z "$op" ] || [ -z "$dir" ] || [ -z "$cat" ] || [ -z "$name" ]; then
     exit 0
+fi
+multidirs=0
+if [ $(echo "$dir" | wc -l) -gt 1 ] || [ $(echo "$cat" | wc -l) -gt 1 ] || [ $(echo "$name" | wc -l) -gt 1 ]; then
+    multidirs=1
 fi
 
 title=""
@@ -20,22 +24,23 @@ link=""
 author=""
 description=""
 categories=""
-if [ $(echo "${changes}" | wc -l) -gt 1 ]; then
+
+if [ "$multidirs" -eq 1 ]; then
     # There are multiple directories changed.
     # Do nothing; Ask the user to set the params manually
     :
 else
     action=""
     if [ "${op}" == "A" ]; then
-         action="New $(echo $type | sed 's/s$//') published"
+         action="New $(echo $cat | sed 's/s$//') published"
     else
-         action="Updated $(echo $type | sed 's/s$//')"
+         action="Updated $(echo $cat | sed 's/s$//')"
     fi
     title="${action}: $(echo $name | sed 's/_/ /g' | sed 's/\b\(.\)/\u\1/g')"
-    link="${url_start}/${type}/${name}${url_end}"
-    categories=$(cat "${dir}/${type}/${name}/index.md" | grep -Po '.*article.*categories=\K[^|}]+(?=)' | awk '{$1=$1};1')
+    link="${url_start}/${cat}/${name}${url_end}"
+    categories=$(cat "${dir}/${cat}/${name}/index.md" | grep -Po '.*article.*categories=\K[^|}]+(?=)' | awk '{$1=$1};1')
     if [ -z "$categories" ]; then
-        categories="${type}"
+        categories="${cat}"
     fi
 fi
 
@@ -49,7 +54,7 @@ function get_user_input {
     else
         printf "Provide $text: " > /dev/tty
     fi
-    read < /dev/tty 
+    read < /dev/tty
     if [ -n "$REPLY" ]; then
         value="$REPLY"
         printf "\n" > /dev/tty
@@ -61,7 +66,7 @@ function ask_user {
     echo "" > /dev/tty
     ans=""
     while true; do
-        read -p "Add to \"$1\" RSS feed (y/n)?" -n 1 -r < /dev/tty 
+        read -p "Add to \"$1\" RSS feed (y/n)?" -n 1 -r < /dev/tty
         echo > /dev/tty
         case "$REPLY" in
           y|Y ) ans="y"; break;;
@@ -73,23 +78,26 @@ function ask_user {
     echo $ans
 }
 
-numTypes=$(echo "$type" | wc -l)
-for t in $dir/$type $dir "." ; do
+numCats=$(echo "$cat" | wc -l)
+for t in $dir/$cat $dir "." ; do
     rssfile="$t/rss.xml"
     if [ ! -e "$rssfile" ]; then
+        rssfile="$t/index/rss.xml"
+    fi
+    if [ ! -e "$rssfile" ]; then
         if [ "$t" != "." ]; then
-            echo "Can't find ${rssfile}"
+            echo "Can't find ${rssfile}" > /dev/tty
         fi
         continue
     fi
 
-    if [ "$t" != "." ] || [ $numTypes -gt 1 ]; then
+    if [ "$t" != "." ] || [ $numCats -gt 1 ]; then
         q="$t"
         if [ "$t" == "." ]; then
             q="Root"
         fi
         if [ $(ask_user "$q") == "n" ]; then
-            if [ $numTypes -eq 1 ]; then
+            if [ $numCats -eq 1 ]; then
                 break
             else
                 continue
@@ -107,6 +115,6 @@ for t in $dir/$type $dir "." ; do
     awk -v timestamp="${timestamp}" -i inplace '{if ($0 ~ "<lastBuildDate>") $0 = "    <lastBuildDate>" timestamp "</lastBuildDate>"; print $0; }' "$rssfile"
     awk -v item="${item}" -i inplace '{if ($0 ~ "<!-- Content -->") $0 = $0 item; print $0; }' "$rssfile"
 
-    git add "$t/rss.xml"
-    printf "\e[32mAdded $t/rss.xml to commit\e[0m\n"
+    git add "$rssfile"
+    printf "\e[32mAdded $rssfile to commit\e[0m\n"
 done

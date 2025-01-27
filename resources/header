@@ -12,6 +12,9 @@
   <link rel="stylesheet" type="text/css" href="${nesting}style_large.css"   media="screen and (min-width: 1201px) and (max-width: 1500px)" />
   <link rel="stylesheet" type="text/css" href="${nesting}style_huge.css"    media="screen and (min-width: 1501px)" />
   <link rel="stylesheet" type="text/css" href="${nesting}style_new.css" />
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for writings and projects" href="${nesting}index-files/rss.xml" />
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for writings only" href="${nesting}writings-files/rss.xml" />
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for projects only" href="${nesting}projects-files/rss.xml" />
 </head>
 
 <body>
@@ -25,7 +28,7 @@
             <div class="menuitem"><a href="${nesting}contact.html">Contact</a></div>
         </div>
         <div class="menuitemicons">
-            <a href="${nesting}rss.html" class="iconlink"><img src="${nesting}images/rss.svg" class="icon" title="RSS feed" alt="RSS feed" /></a>
+            <a href="${nesting}rss.html" class="iconlink"><img src="${nesting}images/rss.svg" class="icon" title="Feeds" alt="Feeds" /></a>
             <a href="mailto:sjoblomj88@gmail.com" class="iconlink"><img src="${nesting}images/email.svg" class="icon" title="E-mail me" alt="E-mail" /></a>
 
             <div class="dropdown">
