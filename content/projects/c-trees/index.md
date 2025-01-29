@@ -1,6 +1,6 @@
 # C-Trees
 
-c-trees is a project intended to be useful as a library. Given a directory it will find all files of a certain type within it and (optionally) recursively find all files in subdirectories. The files and folders are put in an n-ary tree structure, namely the [GNode](https://developer.gnome.org/glib/stable/glib-N-ary-Trees.html) structure of glib.
+c-trees is a project intended to be useful as a library. Given a directory it will find all files of a certain type within it and (optionally) recursively find all files in sub-directories. The files and folders are put in an n-ary tree structure, namely the [GNode](https://developer.gnome.org/glib/stable/glib-N-ary-Trees.html) structure of glib.
 
 It is possible to traverse the structure and only move between files without moving to directories, making it appropriate and straight forward to use in for example an image viewing program.
 

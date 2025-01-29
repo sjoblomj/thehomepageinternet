@@ -11,9 +11,9 @@ The Wikipedia Streetname Filter is a script will parse the wikipedia list of str
 ## dbserver
 The script will send a REST-request for each street in the list, which might flood the Open Street Map servers and cause it to deny requests. Therefore, a dbserver is included, which acts as a server that can answer queries on whether or not a given feature in Open Street Map exists and is within the greater city of Gothenburg.
 
-The dbserver needs to be given the raw Open Street Map data for extraction. The easiest way to obtain that is from [Geofabrik](https://geofabrik.de), which provides the data of [Sweden](https://download.geofabrik.de/europe/sweden.html) for download. The file sweden-latest.osm.pbf needs to be downloaded, which is roughly 600 mb.
+The dbserver needs to be given the raw Open Street Map data for extraction. The easiest way to obtain that is from [Geofabrik](https://geofabrik.de), which provides the data of [Sweden](https://download.geofabrik.de/europe/sweden.html) for download. The file sweden-latest.osm.pbf needs to be downloaded, which is roughly 600 MB.
 
-The dbserver is built using Kotlin and requires a postgis database, which can be started using docker-compose.
+The dbserver is built using Kotlin and requires a PostGIS database, which can be started using docker-compose.
 
 ## Requirements
 To run everything, the following software needs to be installed:
@@ -27,7 +27,7 @@ To run everything, the following software needs to be installed:
 A convenience script is provided that will set up the database, build the dbserver, download the Open Street Map data of Sweden, populate the database and finally run the script to compare the Wikipedia list with the Open Street Map data. Simply start the script by running `./run.sh`.
 
 ### Manually running
-If, instead of running the `run.sh` convenience script, one wishes to manually start the postgis database, start up the dbserver and populate it, do the following:
+If, instead of running the `run.sh` convenience script, one wishes to manually start the PostGIS database, start up the dbserver and populate it, do the following:
 ```
 docker-compose up -d
 cd dbserver

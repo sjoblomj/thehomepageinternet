@@ -8,7 +8,7 @@ Ernest Hemingway's novella The Old Man And The Sea was his last major work publi
 ## Plot
 The story is about an old experienced fisherman, Santiago. Like the others in his Cuban fisher village, he is poor and lives in spartan conditions. At the start of the story, he has gone 84 days without catching a fish. In a young boy who he mentors, he has a friend and companion, but the boy's parents have forced him to take service on a different, less unlucky boat.
 
-The old man sets out to sea the next day, further out into the Gulf Stream than he usually ventures. He sets his fishing lines and catches a marlin, but is unable to haul it in. The fish is too big and strong, and it drags the skiff with it as it swims away to sea. The old man considers tieing the line to the boat, but decides against it as the line might break from sudden movements from the fish. Instead, he holds the line to his back, shoulders and hands, giving slack to the line as needed. The line causes him great pain, but he endures it so that he can catch the fish.
+The old man sets out to sea the next day, further out into the Gulf Stream than he usually ventures. He sets his fishing lines and catches a marlin, but is unable to haul it in. The fish is too big and strong, and it drags the skiff with it as it swims away to sea. The old man considers tying the line to the boat, but decides against it as the line might break from sudden movements from the fish. Instead, he holds the line to his back, shoulders and hands, giving slack to the line as needed. The line causes him great pain, but he endures it so that he can catch the fish.
 
 Hours pass and become days. The old man realises that this is the catch of his life. He barely sleeps for fear of losing his great prize, should it suddenly make jerky movements and snap the line. He eats a little from fish he catches using his other hooks, and he has some water with him.
 
@@ -34,6 +34,6 @@ The book depicts the epic struggle between a simple man and nature. Santiago is 
 
 The story shows how a man can prevail by persistence despite having to endure days of ceaseless struggles and suffering. Hemingway was fascinated with the idea of men proving their worth by facing and overcoming the challenges of nature, and the novella depicts just that. It is the triumph of the mind over the body. Hemingway makes religious comparisons, where he compares the suffering of the old man to that of Jesus on the cross: *"He had sailed for two hours [...], when he saw the first of the two sharks. “Ay,” he said aloud. There is no translation for this word and perhaps it is just a noise such as a man might make, involuntarily, feeling the nail go through his hands and into the wood."*
 
-The novella almost has something Sisyphusian over it; the never ending struggle to go out to sea each morning, but no matter how close the man gets to his goal, it slips out of his reach.
+The novella almost has something Sisyphean over it; the never ending struggle to go out to sea each morning, but no matter how close the man gets to his goal, it slips out of his reach.
 
 It is interesting also to note the very down to earth dialog between the old man and the young boy. They communicate about facts and say only what is needed. A very male discussion, with little room for expressed feelings. 

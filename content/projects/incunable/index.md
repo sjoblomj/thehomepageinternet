@@ -1,6 +1,6 @@
 # Incunable
 
-Incunable is a templating engine, which operates on [Markdown/CommonMark documents](https://commonmark.org) and turns them into for example webpages. In the Markdown, you can use pre-defined templates, on which variable substitution will be performed.
+Incunable is a templating engine, which operates on [Markdown/CommonMark documents](https://commonmark.org) and turns them into for example web-pages. In the Markdown, you can use pre-defined templates, on which variable substitution will be performed.
 
 The engine is made up of a series of awk scripts, along with some Bash and Python thrown in to manage the scripts.
 

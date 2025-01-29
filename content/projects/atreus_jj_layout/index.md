@@ -13,7 +13,7 @@ This is a layout / firmware for the [Keyboardio Atreus](https://shop.keyboard.io
 ## Layout Creator
 A Python script, `layout_creator.py`, is included. Given a file with a Kaleidoscope keyboard layout (*.ino-file), it will create an SVG with the layout. The script is not battle-tested and might fail if fed layouts "from the wild", but it works with the layout included in this repository (atreus_jj_layout.ino).
 
-In the layout files, `#define`-directives are used to map key names to the combinations pressed to create them on the OS locale keymap, and they also doubles as the map to symbols for the Layout Creator. For example:
+In the layout files, `#define`-directives are used to map key names to the combinations pressed to create them on the OS locale key-map, and they also doubles as the map to symbols for the Layout Creator. For example:
 ```
 #define Key_Equals   LSHIFT(Key_0)     // =
 #define Key_Question LSHIFT(Key_Minus) // ? Shifted !

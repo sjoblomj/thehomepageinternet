@@ -32,7 +32,7 @@ The space spanned by the atoms of protein A would be divided into cubes, and so 
 
 {{imgframe |ref=cube3d |file=csod_img5.png |title=Illustration of a protein in a 3-D cube.}}
 
-Thus, every atom of protein A will be assigned into the corresponding cube, and the cube-atom pair will be placed in a hash table. When searching for clashes, we can now go through every atom of protein B, find the 27 adjacent cubes of it and look them up in the hash table. While 27 lookups for an atom might seem costly, the number is constant no matter the size of the proteins. This solution is thus {{math |eq=O(n)}}.
+Thus, every atom of protein A will be assigned into the corresponding cube, and the cube-atom pair will be placed in a hash table. When searching for clashes, we can now go through every atom of protein B, find the 27 adjacent cubes of it and look them up in the hash table. While 27 look-ups for an atom might seem costly, the number is constant no matter the size of the proteins. This solution is thus {{math |eq=O(n)}}.
 
 I received acclaim and the highest grade for the solution, and was afterwards made aware that it is similar to to the "cubing" approach suggested by professor Cyrus Levinthal, who is considered the father of computer graphical display of protein structure.
 

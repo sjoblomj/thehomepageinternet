@@ -1,6 +1,6 @@
 # Course and Bearing
 
-A [LaTeX](https://en.wikipedia.org/wiki/LaTeX) PDF diagram for nautical Course and Bearing. Created when taking a Coastal Yachtmaster Diploma (sv: Kustskepparintyg, de: Küstenschifferschein).
+A [LaTeX](https://en.wikipedia.org/wiki/LaTeX) PDF diagram for nautical Course and Bearing. Created when taking a Coastal Yacht-master Diploma (sv: Kustskepparintyg, de: Küstenschifferschein).
 
 The nomenclature and terms are my best effort, and may be somewhat erroneous.
 

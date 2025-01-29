@@ -7,7 +7,7 @@ Whirling thoughts forming currents that spin out of control. Murky, cold, dark w
 
 Do not engage or explore the beckoning moving water! Keep steadfast on the course, mind the bearings, let the Maelstrom be. Few are the times when constructive thoughts are born out of never ceasing looping around the singularity of the abyss.
 
-Should the alluring be too great to resist — frame it; what in these waters can be constructive and worthwhile? Log and write down whatever might be worth spending time on, and pursue that path with the mainsail rigged and carefully trimmed for the endeavour at a later point in time. Do not let the currents grab hold of the vessel undiscenably.
+Should the alluring be too great to resist — frame it; what in these waters can be constructive and worthwhile? Log and write down whatever might be worth spending time on, and pursue that path with the mainsail rigged and carefully trimmed for the endeavour at a later point in time. Do not let the currents grab hold of the vessel indiscernible.
 
 The Maelstrom usually appears in well-charted waters; steer away when no new ideas are to be found.
 

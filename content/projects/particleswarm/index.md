@@ -36,21 +36,21 @@ In the model, each particle {{math |eq=p_i}} only has a limited visual range, an
 \mathbf{V}_i = \{ p_j : || \mathbf{x}_j - \mathbf{x}_i || < r, \:\: j \neq i \}\,
 {{endmath}},
 
-where {{math |eq=r}} is a constant. Each particle {{math |eq=p_i}} has a position {{math |eq=\mathbf{x}_i}}, a velocity {{math |eq=\mathbf{v}_i}} and an accelleration {{math |eq=\mathbf{a}_i}}, and in each iteration of the algorithm, they are updated using standard Euler integration:
+where {{math |eq=r}} is a constant. Each particle {{math |eq=p_i}} has a position {{math |eq=\mathbf{x}_i}}, a velocity {{math |eq=\mathbf{v}_i}} and an acceleration {{math |eq=\mathbf{a}_i}}, and in each iteration of the algorithm, they are updated using standard Euler integration:
 
 {{beginmath}}
 \mathbf{v}_i &\leftarrow \mathbf{v}_i + \mathbf{a}_i \Delta t\\
 \mathbf{x}_i &\leftarrow \mathbf{x}_i + \mathbf{v}_i \Delta t
 {{endmath}},
 
-where {{math |eq=\Delta t}} is the time step (here set to 1). Each particle is influenced by three movement tendencies that together determine its acceleration. These tendencies are cohersion, alignment and separation.
+where {{math |eq=\Delta t}} is the time step (here set to 1). Each particle is influenced by three movement tendencies that together determine its acceleration. These tendencies are cohesion, alignment and separation.
 
-1. **Cohersion**{{linebreak}}
-   This is the tendency of a particle to stay near the center of the swarm. Let {{math |eq=\rho_i}} denote the center of density of the visibility sphere of particle {{math |eq=i}}. If there are {{math |eq=k_i}} particles in {{math |eq=\mathbf{V}_i}}, then {{linebreak}}
+1. **Cohesion**{{linebreak}}
+   This is the tendency of a particle to stay near the centre of the swarm. Let {{math |eq=\rho_i}} denote the centre of density of the visibility sphere of particle {{math |eq=i}}. If there are {{math |eq=k_i}} particles in {{math |eq=\mathbf{V}_i}}, then {{linebreak}}
    {{beginmath}}
    \rho_i = \frac{1}{k_i} \sum_{p_j \in \mathbf{V}_i} \mathbf{x}_i
    {{endmath}}{{linebreak}}
-   The steering vector representing cohersion is defined as {{linebreak}}
+   The steering vector representing cohesion is defined as {{linebreak}}
    {{beginmath}}
    \mathbf{c}_i = \frac{1}{T^2}\left( \rho_i - \mathbf{x}_i \right)
    {{endmath}}{{linebreak}}
@@ -64,7 +64,7 @@ where {{math |eq=\Delta t}} is the time step (here set to 1). Each particle is i
    where {{math |eq=T}} is a time constant and {{math |eq=k_i}} are the number of particles in {{math |eq=\mathbf{V}_i}}. If there are no particles in {{math |eq=\mathbf{V}_i}}, then {{math |eq=\mathbf{l}_i = \mathbf{0}\,}}.
 
 3. **Separation**{{linebreak}}
-   Separation is needed in order to avoid collition with nearby swarm mates, and is defined as {{linebreak}}
+   Separation is needed in order to avoid collision with nearby swarm mates, and is defined as {{linebreak}}
    {{beginmath}}
    \mathbf{s}_i = \frac{1}{T^2} \sum_{p_j \in \mathbf{V}_i} (\mathbf{x}_i - \mathbf{x}_j)
    {{endmath}}{{linebreak}}
@@ -79,16 +79,16 @@ where {{math |eq=C_c}}, {{math |eq=C_l}} and {{math |eq=C_s}} are constants betw
 
 
 The algorithm works as follows:
-1. **Initialization**{{linebreak}}
-   Initialize the positions and velocities of each particle. Let {{math |eq=N}} denote the swarm size and {{math |eq=n}} the number of variables in the problem to solve. The positions are randomly initialized, using uniform sampling in the range between {{math |eq=x_{\textrm{min} }\,}} and {{math |eq=x_{\textrm{max} }\,}}.{{linebreak}}
+1. **Initialisation**{{linebreak}}
+   Initialise the positions and velocities of each particle. Let {{math |eq=N}} denote the swarm size and {{math |eq=n}} the number of variables in the problem to solve. The positions are randomly initialised, using uniform sampling in the range between {{math |eq=x_{\textrm{min} }\,}} and {{math |eq=x_{\textrm{max} }\,}}.{{linebreak}}
    {{linebreak}}
-   Initialize positions of all the particles as follows:{{linebreak}}
+   Initialise positions of all the particles as follows:{{linebreak}}
    {{beginmath}}
    x_{ij} = x_{\textrm{min} } + r(x_{\textrm{max} } - x_{\textrm{min} })
    {{endmath}}{{linebreak}}
    where {{math |eq=x_{ij}\,}} denotes component {{math |eq=j}} of the position of particle {{math |eq=p_i}} and {{math |eq=r}} is a random number in the range 0 to 1.{{linebreak}}
    {{linebreak}}
-   Initialize the velocities of all the particles as follows:{{linebreak}}
+   Initialise the velocities of all the particles as follows:{{linebreak}}
    {{beginmath}}
    v_{ij} = \frac{\alpha}{\Delta t} \left ( - \frac{x_{\textrm{max} } - x_{\textrm{min} } }{2} + r \left ( x_{\textrm{max} } - x_{\textrm{min} } \right ) \right )
    {{endmath}}{{linebreak}}
@@ -126,7 +126,7 @@ The algorithm works as follows:
    {{beginmath}}
    v_{ij} \leftarrow wv_{ij} + c_1 q \left ( \frac {x_{ij}^\textrm{pb} - x_{ij} }{\Delta t} \right ) + c_2 r \left ( \frac {x_{j}^\textrm{sb} - x_{ij} }{\Delta t} \right )
    {{endmath}}{{linebreak}}
-   where {{math |eq=q}} and {{math |eq=r}} are uniform random numbers between 0 and 1, {{math |eq=w}} is the so called inertia weight and {{math |eq=c_1}} and {{math |eq=c_2}} are positive constants. The {{math |eq=c_1}}-term is somtimes called the cognitive component, and measures the degree of self-confidence of a particle, i.e. how much it trusts its own previous performance in order to get a better result. The {{math |eq=c_2}}-term is sometimes called the social component, and measures how much a particle trusts others to find better candidate solutions.{{linebreak}}
+   where {{math |eq=q}} and {{math |eq=r}} are uniform random numbers between 0 and 1, {{math |eq=w}} is the so called inertia weight and {{math |eq=c_1}} and {{math |eq=c_2}} are positive constants. The {{math |eq=c_1}}-term is sometimes called the cognitive component, and measures the degree of self-confidence of a particle, i.e. how much it trusts its own previous performance in order to get a better result. The {{math |eq=c_2}}-term is sometimes called the social component, and measures how much a particle trusts others to find better candidate solutions.{{linebreak}}
    {{linebreak}}
    The inertia weight {{math |eq=w}} handles the trade off between exploration ({{math |eq=w > 1}}) and exploitation ({{math |eq=w < 1}}). Initially, {{math |eq=w=1.4}}, and after each iteration, {{math |eq=w}} is modified as follows:{{linebreak}}
    {{beginmath}}
@@ -134,7 +134,7 @@ The algorithm works as follows:
    {{endmath}},{{linebreak}}
    where {{math |eq=\beta}} is 0.99. For every iteration, {{math |eq=w}} is decreased in this manner, until it reaches a minimum value of 0.35, where it will be kept fixed. This procedure makes the algorithm explorative in the early stages, and later on turns more and more into exploitation.{{linebreak}}
    {{linebreak}}
-   If the velocities are allowed to grow with no boundary, the swarm will cease to be coherent and will expand indefinately. Therefore, a maximal velocity {{math |eq=v_{\textrm{max} }\,}} is introduced, restricting velocities by{{linebreak}}
+   If the velocities are allowed to grow with no boundary, the swarm will cease to be coherent and will expand indefinitely. Therefore, a maximal velocity {{math |eq=v_{\textrm{max} }\,}} is introduced, restricting velocities by{{linebreak}}
    {{beginmath}}
    v_{ij} = \begin{cases}
      v_{ij} & \text{if $|v_{ij}| < v_{\textrm{max} }$}\\

@@ -6,7 +6,7 @@ The NGPS project was a web front end for management of Volvo trucks and heavy-du
 
 Johan was part of the project during its initial phase and contributed to and took responsibility for its core parts. He worked with features such as searching, filtering, routing and design.
 
-The application was written in React and ECMAScript. Many of the latest technologies were used, with [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate) as a base, which included projects such as Redux (state container), Hot Reloading (instant results on save), Babel (transpiling Javascript dialects), react-router (keeping URLs in sync with the UI), Offline First (making sure Internet access is not required) and redux-saga (side effect management).
+The application was written in React and ECMAScript. Many of the latest technologies were used, with [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate) as a base, which included projects such as Redux (state container), Hot Reloading (instant results on save), Babel (transpiling JavaScript dialects), react-router (keeping URLs in sync with the UI), Offline First (making sure Internet access is not required) and Redux-saga (side effect management).
 
 
 {{thumbnail |title=Screenshot of a very, very early version of the project: |small=ngps_small.png |large=ngps.png}}
