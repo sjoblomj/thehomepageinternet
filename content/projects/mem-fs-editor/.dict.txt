@@ -1,0 +1,8 @@
+templating
+mem
+fs
+ejs
+png
+JHipster
+github
+repo

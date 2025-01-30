@@ -1,0 +1,9 @@
+Rosling
+gapminder
+Gapminder
+Capita
+js
+png
+html
+github
+repo
