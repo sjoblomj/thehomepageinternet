@@ -1,0 +1,38 @@
+#!/bin/bash
+files_committed=$(git diff --cached --name-only --diff-filter=ACM)
+
+spelling_mistakes_found=0
+for f in $files_committed ; do
+    if [[ $(basename "$f") != "index.md" ]]; then
+        continue
+    fi
+
+    if [ -f ./$(dirname "$f")/.dict.txt ]; then
+        dict=$(mktemp)
+        aspell --lang=en --encoding=UTF-8 create master "$dict" < ./$(dirname "$f")/.dict.txt
+        res=$(aspell --lang=en_gb --add-extra-dicts="$dict" --mode=markdown --list < "$f")
+        rm -rf "$dict"
+    else
+        res=$(aspell --lang=en_gb --mode=markdown --list < "$f")
+    fi
+
+    if [ -n "$res" ]; then
+        if [ "$spelling_mistakes_found" -eq 0 ]; then
+           echo "The following files contain spelling mistakes:" > /dev/tty
+        fi
+        spelling_mistakes_found=1
+        echo "  $f" > /dev/tty
+    fi
+done
+
+if [ "$spelling_mistakes_found" -eq 1 ]; then
+    echo "" > /dev/tty
+    echo "Correct by running:" > /dev/tty
+    echo "  DIRECTORY=./content/projects/some_project" > /dev/tty
+    echo "  aspell --lang=en --encoding=UTF-8 create master \$DIRECTORY/.dict.rws < \$DIRECTORY/.dict.txt" > /dev/tty
+    echo "  aspell --lang=en_gb --add-extra-dicts=\$DIRECTORY/.dict.rws --mode=markdown --dont-backup --check \$DIRECTORY/index.md" > /dev/tty
+    echo "" > /dev/tty
+    echo "Add words to the dictionary located at:" > /dev/tty
+    echo "  \$DIRECTORY/.dict.txt" > /dev/tty
+    exit 1
+fi
