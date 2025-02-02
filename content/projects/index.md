@@ -2,7 +2,7 @@
 
 On this page is a selection of a few of the projects I have written, open source projects I have contributed to, and enterprise systems I have worked on. Click on any of them to read more.
 
-{{comment |text={{inkling |title=Genetic Programming |dir=projects |link=geneticprogramming |img=dna_small.png |description=Written in: Kotlin{{linebreak}}{{linebreak}}Using natural selection to find problem solutions.}} }}
+{{comment |text={{imglink |title=Genetic Programming |dir=projects |link=geneticprogramming |img=dna_small.png |description=Written in: Kotlin{{linebreak}}{{linebreak}}Using natural selection to find problem solutions.}} }}
 {{comment |text={{imglink |title=osm-highlighter |dir=projects |link=osm-highlighter |img=osm-highlighter_small.png |description=Written in: Kotlin, PostGIS, HTML, JavaScript{{linebreak}}{{linebreak}}Interactive map that highlights problems in OpenStreetMap.}} }}
 {{imglink |title=Cubic Steric Overlap Detector |dir=projects |link=csod |img=csod_logo_small.png |description=Written in: Java{{linebreak}}{{linebreak}}Program for finding steric overlaps in proteins using hashed volumes.}}
 {{imglink |title=Gapminder |dir=projects |link=gapminder |img=gapminder_small.png |description=Written in: d3.js and JavaScript{{linebreak}}{{linebreak}}Interactive chart showing the development of the world. Clone of Gapminder chart.}}
