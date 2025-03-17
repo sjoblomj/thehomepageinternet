@@ -31,7 +31,7 @@ if [ "$multidirs" -eq 1 ]; then
     :
 else
     action=""
-    if [ "${op}" == "A" ]; then
+    if [[ "${op}" == *A* ]]; then
          action="New $(echo $cat | sed 's/s$//') published"
     else
          action="Updated $(echo $cat | sed 's/s$//')"
