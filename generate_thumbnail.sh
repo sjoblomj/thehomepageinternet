@@ -4,7 +4,7 @@ infile="$1"
 outfile="$2"
 bc="#888888"
 
-if [ "$outfile" == "" ]; then
+if [ "$outfile" = "" ]; then
   outfile="$infile"
 fi
 
@@ -12,19 +12,19 @@ fi
 
 insize=$(identify -format "%[fx:w]x%[fx:h]" "$infile")
 
-convert "$infile" \
+magick  "$infile" \
         -format 'roundrectangle 2,2 %[fx:w],%[fx:h] 15,15'\
         info: > tmp.mvg
 
-convert "$infile" -border 3 -alpha transparent \
+magick  "$infile" -border 3 -alpha transparent \
         -background none -fill white -stroke none -strokewidth 0 \
-        -draw "@tmp.mvg"    tmp_mask.png
-convert "$infile" -border 3 -alpha transparent \
+        -draw "@tmp.mvg" tmp_mask.png
+magick  "$infile" -border 3 -alpha transparent \
         -background none -fill none -stroke "$bc" -strokewidth 1 \
-        -draw "@tmp.mvg"    tmp_overlay.png
+        -draw "@tmp.mvg" tmp_overlay.png
 
 
-convert "$infile" -alpha set -bordercolor none -border 3 \
+magick  "$infile" -alpha set -bordercolor none -border 3 \
         tmp_mask.png -compose DstIn -composite \
         tmp_overlay.png -compose Over -composite \
         "$outfile"
@@ -32,7 +32,7 @@ convert "$infile" -alpha set -bordercolor none -border 3 \
 # Cleanup of temporary files
 rm -f tmp.mvg tmp_mask.png tmp_overlay.png
 
-convert "$outfile" -fuzz 7% -trim "$outfile"
+magick  "$outfile" -fuzz 7% -trim "$outfile"
 
 outsize=$(identify -format "%[fx:w]x%[fx:h]" "$outfile")
 if [ "$outsize" != "275x170" ]; then
