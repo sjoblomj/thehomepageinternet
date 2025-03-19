@@ -12,9 +12,18 @@
         <url>https://www.sjoblomj.org/favicon.svg</url>
     </image>
     <pubDate>Fri, 07 Oct 2022 18:17:16 +0000</pubDate>
-    <lastBuildDate>Sat, 25 Jan 2025 14:23:14 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Mar 2025 22:30:38 +0000</lastBuildDate>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <!-- Content -->
+    <item>
+      <title>New project published: oh-my-zsh</title>
+      <dc:creator>Johan Sjöblom</dc:creator>
+      <guid isPermaLink="false">https://www.sjoblomj.org/projects/ohmyzsh.html Wed, 19 Mar 2025 22:30:38 +0000</guid>
+      <link>https://www.sjoblomj.org/projects/ohmyzsh.html</link>
+      <description>Added a page with my contributions to oh-my-zsh; a framework for managing zsh configuration.</description>
+      <category>projects</category>
+      <pubDate>Wed, 19 Mar 2025 22:30:38 +0000</pubDate>
+    </item>
     <item>
       <title>New project published: Waybar</title>
       <dc:creator>Johan Sjöblom</dc:creator>

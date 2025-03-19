@@ -37,6 +37,7 @@ On this page is a selection of a few of the projects I have written, open source
 Here follows a selection of the open source projects that I have contributed to. Click on any of them to read more.
 
 {{imglink |title=OpenAPI Generator |dir=projects |link=openapi |img=openapi_small.png |description=Written in: Kotlin, Java and Mustache{{linebreak}}{{linebreak}}Allows generation of API client libraries, server stubs etc. given an OpenAPI Spec.}}
+{{imglink |title=oh-my-zsh |dir=projects |link=ohmyzsh |img=ohmyzsh_small.png |description=Written in: zsh{{linebreak}}{{linebreak}}Framework for managing zsh configuration.}}
 {{imglink |title=Sunburst |dir=projects |link=sunburst |img=sunburst_small.png |description=Written in: d3.js and JavaScript{{linebreak}}{{linebreak}}Interactive doughnut chart.}}
 {{imglink |title=Waybar |dir=projects |link=waybar |img=waybar_small.png |description=Written in: C++{{linebreak}}{{linebreak}}Wayland bar listing open apps and widgets.}}
 {{imglink |title=mem-fs-editor |dir=projects |link=mem-fs-editor |img=mem-fs-editor_icon_small.png |description=Written in: JavaScript{{linebreak}}{{linebreak}}File edition helpers working on top of mem-fs.}}

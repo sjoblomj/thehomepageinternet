@@ -1,0 +1,7 @@
+ohmyzsh
+zsh
+bgnotify
+awk
+jq
+png
+appid's
